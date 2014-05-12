@@ -76,6 +76,7 @@ Alien.prototype.step = function(dt) {
   return true;
 }
 
+//Defines how often aliens should fire
 Alien.prototype.fireSometimes = function() {
       if(Math.random()*100 < 10) {
         this.board.addSprite('missile',this.x + this.w/2 - Sprites.map.missile.w/2,
@@ -98,6 +99,7 @@ Player.prototype.die = function() {
   Game.callbacks['die']();
 }
 
+//Player spaceship controls
 Player.prototype.step = function(dt) {
   if(Game.keys['left']) { this.x -= 100 * dt; }
   if(Game.keys['right']) { this.x += 100 * dt; }
@@ -107,6 +109,7 @@ Player.prototype.step = function(dt) {
 
   this.reloading--;
 
+//Maximum number of missiles, missile speed and reload delay
   if(Game.keys['fire'] && this.reloading <= 0 && this.board.missiles < 3) {
     GameAudio.play('fire');
     this.board.addSprite('missile',

@@ -1,4 +1,4 @@
-
+//Level maps enemy positions
   var levelData = { 
      1:  [[0,0,0,0,0,0,0,0,0,0,0],
           [0,0,0,0,0,0,0,0,0,0,0],
@@ -23,6 +23,7 @@
           [0,0,1,1,1,1,1,1,1,1,0],
           [0,0,1,1,1,1,1,1,1,1,0]] };
 
+//Individual sprite coordinates on sprite sheet
   var spriteData = {
     'alien1': { sx: 0,  sy: 0,  w: 24, h: 18, cls: Alien, frames: 2 },
     'alien2': { sx: 0,  sy: 18, w: 24, h: 18, cls: Alien, frames: 2 },
@@ -31,6 +32,7 @@
     'missile': { sx: 0,  sy: 86, w: 3,  h: 14, cls: Missile }
   }
 
+//Game text and start screens  
   function startGame() {
     var screen = new GameScreen("ALIEN INVADERS","PRESS SPACE TO START",
                                  function() {

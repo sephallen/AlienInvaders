@@ -1,17 +1,21 @@
+//Define keyboard buttons with keycodes
 var Game = new function() {                                                                  
   var KEY_CODES = { 37:'left', 39:'right', 32 :'fire' };
   this.keys = {};
 
+//Create canvas
   this.initialize = function(canvas_dom,level_data,sprite_data,callbacks) {
     this.canvas_elem = $(canvas_dom)[0];
     this.canvas = this.canvas_elem.getContext('2d');
     this.width = $(this.canvas_elem).attr('width');
     this.height= $(this.canvas_elem).attr('height');
 
+//Listen for keypress
     $(window).keydown(function(event) {
       if(KEY_CODES[event.keyCode]) Game.keys[KEY_CODES[event.keyCode]] = true;
     });
 
+//Ignore key release
     $(window).keyup(function(event) {
       if(KEY_CODES[event.keyCode]) Game.keys[KEY_CODES[event.keyCode]] = false;
     });
@@ -30,6 +34,7 @@ var Game = new function() {
   };
 };
 
+//Load spritesheet
 var Sprites = new function() {
   this.map = { }; 
 
@@ -47,11 +52,13 @@ var Sprites = new function() {
   };
 }
 
+//Load start screen text and listen for space bar press
 var GameScreen = function GameScreen(text,text2,callback) {
   this.step = function(dt) {
     if(Game.keys['fire'] && callback) callback();
   };
 
+//Font styling
   this.render = function(canvas) {
     canvas.clearRect(0,0,Game.width,Game.height);
     canvas.font = "bold 40px retroville";
@@ -125,12 +132,14 @@ var GameBoard = function GameBoard(level_number) {
     });
   };
 
+//Load spaceship sprite    
   this.loadLevel = function(level) {
     this.objects = [];
     this.player = this.addSprite('player', // Sprite
                                  Game.width/2, // X
                                  Game.height - Sprites.map['player'].h - 10); // Y
 
+//Load aline sprites      
     var flock = this.add(new AlienFlock());
     for(var y=0,rows=level.length;y<rows;y++) {
       for(var x=0,cols=level[y].length;x<cols;x++) {
@@ -165,6 +174,7 @@ var GameAudio = new function() {
     audio_channels[a]['finished'] = -1;	
   }
 
+//Load game sounds    
   this.load = function(files,callback) {
     var audioCallback = function() { GameAudio.finished(callback); }
 
