@@ -32,7 +32,7 @@
   }
 
   function startGame() {
-    var screen = new GameScreen("Alien Invaders","press space to start",
+    var screen = new GameScreen("ALIEN INVADERS","PRESS SPACE TO START",
                                  function() {
                                      Game.loadBoard(new GameBoard(1));
                                  });
@@ -41,7 +41,7 @@
   }
 
   function endGame() {
-    var screen = new GameScreen("Game Over","(press space to restart)",
+    var screen = new GameScreen("GAME OVER","PRESS SPACE TO RESTART",
                                  function() {
                                      Game.loadBoard(new GameBoard(1));
                                  });
@@ -50,7 +50,7 @@
 
 
   function winGame() {
-    var screen = new GameScreen("You Win!","(press space to restart)",
+    var screen = new GameScreen("YOU WIN!","PRESS SPACE TO RESTART",
                                  function() {
                                      Game.loadBoard(new GameBoard(1));
                                  });
