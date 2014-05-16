@@ -58,6 +58,14 @@ Alien.prototype.die = function() {
   GameAudio.play('die');
   this.flock.speed += 1;
   this.board.remove(this);
+  var randomFeeling = feelings[Math.floor(Math.random()*feelings.length)];
+var c = document.getElementById("scoreboard");
+var ctx = c.getContext("2d");
+ctx.fillStyle = "#000000";
+ctx.fillRect(0,0,500,100);
+ctx.fillStyle = "#FFFFFF";
+ctx.font = "15px retroville";
+wrapText(ctx,randomFeeling,5,20,500,15);
 }
 
 Alien.prototype.step = function(dt) {

@@ -8,15 +8,40 @@
   <script src='js/engine.js'></script>
   <script src='js/game.js'></script>
   <script src='js/level.js'></script>
-
-  <style>
-      #gameboard { background-color:black; }
-      #game-wrapper { margin:0 auto; width: 500px; }
-  </style>
 </head>
 <body>
+    
+    <script>
+        var feelings = new Array();
+        $.get('feelings.txt', function(data){
+            feelings = data.split('\n');
+            //            console.log(feelings[5]);
+        });
+    </script>
+    <script>
+        function wrapText(context, text, x, y, maxWidth, lineHeight) {
+        var words = text.split(' ');
+        var line = '';
+
+        for(var n = 0; n < words.length; n++) {
+          var testLine = line + words[n] + ' ';
+          var metrics = context.measureText(testLine);
+          var testWidth = metrics.width;
+          if (testWidth > maxWidth && n > 0) {
+            context.fillText(line, x, y);
+            line = words[n] + ' ';
+            y += lineHeight;
+          }
+          else {
+            line = testLine;
+          }
+        }
+        context.fillText(line, x, y);
+      }
+    </script>
 <!--Game window-->
   <div id='game-wrapper'>
+    <canvas id='scoreboard' width='500' height='100'></canvas>
     <canvas id='gameboard' width='500' height='500'></canvas>
   </div>
 </body>
