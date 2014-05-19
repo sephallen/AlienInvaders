@@ -60,13 +60,21 @@ Alien.prototype.die = function() {
   this.board.remove(this);
   var randomFeeling = feelings[Math.floor(Math.random()*feelings.length)];
 //  Display random feeling and redraw background
-  var c = document.getElementById("scoreboard");
+  var c = document.getElementById("feelingsboard");
   var ctx = c.getContext("2d");
   ctx.fillStyle = "#000000";
   ctx.fillRect(0,0,500,100);
   ctx.fillStyle = "#FFFFFF";
   ctx.font = "15px retroville";
   wrapText(ctx,randomFeeling,5,20,500,15);
+  var scorediv = document.getElementById("scoreboard");
+  var scorectx = scorediv.getContext("2d");
+  scorectx.fillStyle = "#000000";
+  scorectx.fillRect(0,0,500,25);
+  scorectx.fillStyle = "#FFFFFF";
+  scorectx.font = "15px retroville";
+  scorectx.fillText("Aliens with feelings needlessly murdered: "+score,5,18);
+  score++;
 }
 
 Alien.prototype.step = function(dt) {

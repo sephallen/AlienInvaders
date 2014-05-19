@@ -4,7 +4,7 @@
     src: url('fonts/retroville.ttf');
 }
 
-#gameboard, #scoreboard {
+#gameboard, #feelingsboard, #scoreboard {
     background-color:black;
 }
 

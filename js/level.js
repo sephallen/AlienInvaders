@@ -37,6 +37,14 @@
     var screen = new GameScreen("ALIEN INVADERS","PRESS SPACE TO START",
                                  function() {
                                      Game.loadBoard(new GameBoard(1));
+                                     score = 1;
+                                     var scorediv = document.getElementById("scoreboard");
+                                     var scorectx = scorediv.getContext("2d");
+                                     scorectx.fillStyle = "#000000";
+                                     scorectx.fillRect(0,0,500,25);
+                                     scorectx.fillStyle = "#FFFFFF";
+                                     scorectx.font = "15px retroville";
+                                     scorectx.fillText("Aliens with feelings needlessly murdered: 0",5,18);
                                  });
     Game.loadBoard(screen);
     Game.loop();
@@ -46,6 +54,7 @@
     var screen = new GameScreen("GAME OVER","PRESS SPACE TO RESTART",
                                  function() {
                                      Game.loadBoard(new GameBoard(1));
+                                     score = 1;
                                  });
     Game.loadBoard(screen);
   }

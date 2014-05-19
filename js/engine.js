@@ -209,4 +209,5 @@ var GameAudio = new function() {
     }
   };
 };
-
+//Score variable
+var score = 1;
