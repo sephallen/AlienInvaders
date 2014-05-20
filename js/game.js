@@ -66,7 +66,7 @@ Alien.prototype.die = function() {
   ctx.fillRect(0,0,500,100);
   ctx.fillStyle = "#FFFFFF";
   ctx.font = "15px retroville";
-  wrapText(ctx,randomFeeling,5,20,500,15);
+  wrapText(ctx,randomFeeling,5,18,500,15);
   var scorediv = document.getElementById("scoreboard");
   var scorectx = scorediv.getContext("2d");
   scorectx.fillStyle = "#000000";
@@ -74,6 +74,7 @@ Alien.prototype.die = function() {
   scorectx.fillStyle = "#FFFFFF";
   scorectx.font = "15px retroville";
   scorectx.fillText("Aliens with feelings needlessly murdered: "+score,5,18);
+//  Increase score
   score++;
 }
 

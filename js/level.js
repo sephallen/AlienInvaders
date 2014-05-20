@@ -21,7 +21,18 @@
           [0,0,2,2,2,2,2,2,2,2,0],
           [0,0,2,2,2,2,2,2,2,2,0],
           [0,0,1,1,1,1,1,1,1,1,0],
-          [0,0,1,1,1,1,1,1,1,1,0]] };
+          [0,0,1,1,1,1,1,1,1,1,0]],
+     3:  [[3,3,3,3,3,3,3,3,3,3,3],
+          [3,3,3,3,3,3,3,3,3,3,3],
+          [3,3,3,3,3,3,3,3,3,3,3],
+          [3,3,3,3,3,3,3,3,3,3,3],
+          [2,2,2,2,2,2,2,2,2,2,2],
+          [2,2,2,2,2,2,2,2,2,2,2],
+          [2,2,2,2,2,2,2,2,2,2,2],
+          [2,2,2,2,2,2,2,2,2,2,2],
+          [1,1,1,1,1,1,1,1,1,1,1],
+          [1,1,1,1,1,1,1,1,1,1,1],
+          [1,1,1,1,1,1,1,1,1,1,1]] };
 
 //Individual sprite coordinates on sprite sheet
   var spriteData = {
@@ -34,7 +45,7 @@
 
 //Game text and start screens  
   function startGame() {
-    var screen = new GameScreen("ALIEN INVADERS","PRESS SPACE TO START",
+    var screen = new GameScreen("FEELING INVADERS","PRESS SPACE TO START",
                                  function() {
                                      Game.loadBoard(new GameBoard(1));
                                      score = 1;
