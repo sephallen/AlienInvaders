@@ -92,8 +92,11 @@ Alien.prototype.step = function(dt) {
     GameAudio.play('blip');
     if(this.x > Game.width - Sprites.map.alien1.w * 2) this.flock.hit = -1;
     if(this.x < Sprites.map.alien1.w) this.flock.hit = 1;
-      
   }
+    if(this.y > 470) {
+        GameAudio.play('die');
+        Game.callbacks['die']();
+    }
   return true;
 }
 
