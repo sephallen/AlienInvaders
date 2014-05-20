@@ -81,6 +81,7 @@ Alien.prototype.die = function() {
 Alien.prototype.step = function(dt) {
   this.mx += dt * this.flock.dx;
   this.y += this.flock.dy;
+       
   if(Math.abs(this.mx) > 10) {
     if(this.y == this.flock.max_y[this.x]) {
       this.fireSometimes();
@@ -88,8 +89,10 @@ Alien.prototype.step = function(dt) {
     this.x += this.mx;
     this.mx = 0;
     this.frame = (this.frame+1) % 2;
+    GameAudio.play('blip');
     if(this.x > Game.width - Sprites.map.alien1.w * 2) this.flock.hit = -1;
     if(this.x < Sprites.map.alien1.w) this.flock.hit = 1;
+      
   }
   return true;
 }
