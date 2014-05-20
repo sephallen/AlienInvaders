@@ -40,7 +40,8 @@
     'alien2': { sx: 0,  sy: 18, w: 24, h: 18, cls: Alien, frames: 2 },
     'alien3': { sx: 48,  sy: 0, w: 24, h: 18, cls: Alien, frames: 2 },
     'player': { sx: 0,  sy: 36, w: 26, h: 17, cls: Player },
-    'missile': { sx: 0,  sy: 86, w: 3,  h: 14, cls: Missile }
+    'missile': { sx: 0,  sy: 86, w: 3,  h: 14, cls: Missile },
+    'missile2': { sx: 3,  sy: 86, w: 6,  h: 15, cls: Missile2, frames: 2 }
   }
 
 //Game text and start screens  

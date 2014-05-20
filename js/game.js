@@ -97,7 +97,7 @@ Alien.prototype.step = function(dt) {
 //Defines how often aliens should fire
 Alien.prototype.fireSometimes = function() {
       if(Math.random()*100 < 10) {
-        this.board.addSprite('missile',this.x + this.w/2 - Sprites.map.missile.w/2,
+        this.board.addSprite('missile2',this.x + this.w/2 - Sprites.map.missile2.w/2,
                                       this.y + this.h, 
                                      { dy: 100 });
       }
@@ -164,5 +164,33 @@ Missile.prototype.step = function(dt) {
 Missile.prototype.die = function() {
   if(this.player) this.board.missiles--;
   if(this.board.missiles < 0) this.board.missiles=0;
+   this.board.remove(this);
+}
+
+var Missile2 = function Missile2(opts) {
+   this.dy = opts.dy;
+   this.player = opts.player;
+   this.frame = 0;
+}
+
+Missile2.prototype.draw = function(canvas) {
+   Sprites.draw(canvas,'missile2',this.x,this.y,this.frame);
+}
+
+Missile2.prototype.step = function(dt) {
+   this.y += this.dy * dt;
+   this.frame = (this.frame+1) % 2;
+
+   var enemy = this.board.collide(this);
+   if(enemy) { 
+     enemy.die();
+     return false;
+   }
+   return (this.y < 0 || this.y > Game.height) ? false : true;
+}
+
+Missile2.prototype.die = function() {
+  if(this.player) this.board.missiles2--;
+  if(this.board.missiles2 < 0) this.board.missiles2=0;
    this.board.remove(this);
 }
