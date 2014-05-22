@@ -1,3 +1,6 @@
+//Score variable
+var score = 0;
+
 //Level maps enemy positions
   var levelData = { 
      1:  [[0,0,0,0,0,0,0,0,0,0,0],
@@ -46,34 +49,35 @@
 
 //Game text and start screens  
   function startGame() {
-    var screen = new GameScreen("FEELING INVADERS","PRESS 'S' TO START",
+    var screen = new GameScreen("FEELING INVADERS","PRESS ENTER TO START",
                                  function() {
                                      Game.loadBoard(new GameBoard(1));
-                                     score = 1;
+//                                     score = 0;
                                      var scorediv = document.getElementById("scoreboard");
                                      var scorectx = scorediv.getContext("2d");
                                      scorectx.fillStyle = "#000000";
                                      scorectx.fillRect(0,0,500,25);
                                      scorectx.fillStyle = "#FFFFFF";
                                      scorectx.font = "15px retroville";
-                                     scorectx.fillText("Aliens with feelings needlessly murdered: 0",5,18);
+                                     scorectx.textAlign = "center";
+                                     scorectx.fillText("Aliens with feelings needlessly murdered: "+score,250,18);
                                  });
     Game.loadBoard(screen);
     Game.loop();
   }
 
   function endGame() {
-    var screen = new GameScreen("GAME OVER","PRESS 'S' TO RESTART",
+    var screen = new GameScreen("GAME OVER","PRESS ENTER TO RESTART",
                                  function() {
                                      Game.loadBoard(new GameBoard(1));
-                                     score = 1;
+                                     score = 0;
                                  });
     Game.loadBoard(screen);
   }
 
 
   function winGame() {
-    var screen = new GameScreen("YOU WIN!","PRESS 'S' TO RESTART",
+    var screen = new GameScreen("YOU WIN!","PRESS ENTER TO RESTART",
                                  function() {
                                      Game.loadBoard(new GameBoard(1));
                                  });

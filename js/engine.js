@@ -1,6 +1,6 @@
 //Define keyboard buttons with keycodes
 var Game = new function() {                                                                  
-  var KEY_CODES = { 37:'left', 39:'right', 32 :'fire', 83:'s' };
+  var KEY_CODES = { 37:'left', 39:'right', 32 :'fire', 13:'enter' };
   this.keys = {};
 
 //Create canvas
@@ -52,10 +52,19 @@ var Sprites = new function() {
   };
 }
 
-//Load start screen text and listen for "s" keypress
+//Load start screen text and listen for enter keypress
 var GameScreen = function GameScreen(text,text2,callback) {
   this.step = function(dt) {
-    if(Game.keys['s'] && callback) callback();
+    if(Game.keys['enter'] && callback) 
+        callback();
+          var scorediv = document.getElementById("scoreboard");
+  var scorectx = scorediv.getContext("2d");
+  scorectx.fillStyle = "#000000";
+  scorectx.fillRect(0,0,500,25);
+  scorectx.fillStyle = "#FFFFFF";
+  scorectx.font = "15px retroville";
+  scorectx.textAlign = "center";
+  scorectx.fillText("Aliens with feelings needlessly murdered: "+score,250,18);
   };
 
 //Font styling
@@ -77,7 +86,7 @@ var GameScreen = function GameScreen(text,text2,callback) {
     ctx.font = "15px retroville";
     ctx.textAlign = "center";
     ctx.fillText("PLAYER CONTROLS:",250,18);
-    ctx.fillText("MOVE: LEFT AND RIGHT",250,36);
+    ctx.fillText("MOVE: LEFT AND RIGHT ARROW KEYS",250,36);
     ctx.fillText("FIRE: SPACE BAR",250,54);
   };
 };
@@ -220,5 +229,3 @@ var GameAudio = new function() {
     }
   };
 };
-//Score variable
-var score = 1;

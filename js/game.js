@@ -55,6 +55,8 @@ Alien.prototype.draw = function(canvas) {
 }
 
 Alien.prototype.die = function() {
+//  Increase score
+  score++;    
   GameAudio.play('die');
   this.flock.speed += 1;
   this.board.remove(this);
@@ -73,9 +75,8 @@ Alien.prototype.die = function() {
   scorectx.fillRect(0,0,500,25);
   scorectx.fillStyle = "#FFFFFF";
   scorectx.font = "15px retroville";
-  scorectx.fillText("Aliens with feelings needlessly murdered: "+score,5,18);
-//  Increase score
-  score++;
+  scorectx.textAlign = "center";
+  scorectx.fillText("Aliens with feelings needlessly murdered: "+score,250,18);
 }
 
 Alien.prototype.step = function(dt) {
