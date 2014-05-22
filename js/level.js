@@ -46,7 +46,7 @@
 
 //Game text and start screens  
   function startGame() {
-    var screen = new GameScreen("FEELING INVADERS","PRESS SPACE TO START",
+    var screen = new GameScreen("FEELING INVADERS","PRESS 'S' TO START",
                                  function() {
                                      Game.loadBoard(new GameBoard(1));
                                      score = 1;
@@ -63,7 +63,7 @@
   }
 
   function endGame() {
-    var screen = new GameScreen("GAME OVER","PRESS SPACE TO RESTART",
+    var screen = new GameScreen("GAME OVER","PRESS 'S' TO RESTART",
                                  function() {
                                      Game.loadBoard(new GameBoard(1));
                                      score = 1;
@@ -73,7 +73,7 @@
 
 
   function winGame() {
-    var screen = new GameScreen("YOU WIN!","PRESS SPACE TO RESTART",
+    var screen = new GameScreen("YOU WIN!","PRESS 'S' TO RESTART",
                                  function() {
                                      Game.loadBoard(new GameBoard(1));
                                  });

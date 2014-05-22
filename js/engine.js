@@ -1,6 +1,6 @@
 //Define keyboard buttons with keycodes
 var Game = new function() {                                                                  
-  var KEY_CODES = { 37:'left', 39:'right', 32 :'fire' };
+  var KEY_CODES = { 37:'left', 39:'right', 32 :'fire', 83:'s' };
   this.keys = {};
 
 //Create canvas
@@ -52,10 +52,10 @@ var Sprites = new function() {
   };
 }
 
-//Load start screen text and listen for space bar press
+//Load start screen text and listen for "s" keypress
 var GameScreen = function GameScreen(text,text2,callback) {
   this.step = function(dt) {
-    if(Game.keys['fire'] && callback) callback();
+    if(Game.keys['s'] && callback) callback();
   };
 
 //Font styling
@@ -68,6 +68,17 @@ var GameScreen = function GameScreen(text,text2,callback) {
     canvas.font = "20px retroville";
     var measure2 = canvas.measureText(text2);
     canvas.fillText(text2,Game.width/2 - measure2.width/2,Game.height/2 + 40);
+//    Display player controls
+    var c = document.getElementById("feelingsboard");
+    var ctx = c.getContext("2d");
+    ctx.fillStyle = "#000000";
+    ctx.fillRect(0,0,500,100);
+    ctx.fillStyle = "#FFFFFF";
+    ctx.font = "15px retroville";
+    ctx.textAlign = "center";
+    ctx.fillText("PLAYER CONTROLS:",250,18);
+    ctx.fillText("MOVE: LEFT AND RIGHT",250,36);
+    ctx.fillText("FIRE: SPACE BAR",250,54);
   };
 };
 
