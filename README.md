@@ -17,6 +17,9 @@ However, as this game is designed to be ran locally, another problem arises. Jav
 
 If you have Python installed on your machine, fire up a terminal, `cd` to the game directory and type `python -m SimpleHTTPServer` then point your browser to `localhost:8000` and play!
 
+Original README from forked project
+-----------------------------------
+
 A Simple HTML5 Game To-be used in a Tutorial
 
 Slides up at:
