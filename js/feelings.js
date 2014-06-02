@@ -4,7 +4,7 @@ $.get('feelings.txt', function(data){
     feelings = data.split('\n');
 });
 
-//Wordrap function to prevent longer feelings from disappearing out of the div
+//Wordrap function to prevent longer feelings from disappearing out of the div taken from http://www.html5canvastutorials.com/tutorials/html5-canvas-wrap-text-tutorial/
 function wrapText(context, text, x, y, maxWidth, lineHeight) {
     var words = text.split(' ');
     var line = '';
