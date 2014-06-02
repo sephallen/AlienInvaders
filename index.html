@@ -8,38 +8,9 @@
   <script src='js/engine.js'></script>
   <script src='js/game.js'></script>
   <script src='js/level.js'></script>
+  <script src='js/feelings.js'></script>
 </head>
-<body>
-    
-  <script>
-//    Import feelings.txt into array
-    var feelings = new Array();
-    $.get('feelings.txt', function(data){
-      feelings = data.split('\n');
-//      console.log(feelings);
-    });
-  </script>
-  <script>
-//    Wordrap function to prevent longer feelings from disappearing out of the div
-    function wrapText(context, text, x, y, maxWidth, lineHeight) {
-    var words = text.split(' ');
-    var line = '';
-
-      for(var n = 0; n < words.length; n++) {
-        var testLine = line + words[n] + ' ';
-        var metrics = context.measureText(testLine);
-        var testWidth = metrics.width;
-        if (testWidth > maxWidth && n > 0) {
-          context.fillText(line, x, y);
-          line = words[n] + ' ';
-          y += lineHeight;
-        } else {
-          line = testLine;
-        }
-      }
-    context.fillText(line, x, y);
-    }
-  </script>
+<body>    
 <!--Game window-->
   <div id='game-wrapper'>
     <canvas id='scoreboard' width='500' height='25'></canvas>

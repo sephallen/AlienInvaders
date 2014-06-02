@@ -52,7 +52,6 @@ var score = 0;
     var screen = new GameScreen("FEELING INVADERS","PRESS ENTER TO START",
                                  function() {
                                      Game.loadBoard(new GameBoard(1));
-//                                     score = 0;
                                      var scorediv = document.getElementById("scoreboard");
                                      var scorectx = scorediv.getContext("2d");
                                      scorectx.fillStyle = "#000000";
