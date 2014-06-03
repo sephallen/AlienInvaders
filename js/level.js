@@ -85,7 +85,7 @@ var score = 0;
   }
 
   $(function() {
-    GameAudio.load({ 'fire' : 'media/laser.ogg', 'die' : 'media/explosion.ogg', 'blip' : 'media/blip.ogg' }, 
+    GameAudio.load({ 'fire' : 'media/laser.ogg', 'die' : 'media/explosion.ogg', 'blip' : 'media/blip.ogg', 'alienship' : 'media/alienship.ogg' }, 
                    function() { 
                        Game.initialize("#gameboard", levelData, spriteData,
                                       { "start": startGame,

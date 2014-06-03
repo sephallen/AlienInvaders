@@ -129,7 +129,7 @@ var GameBoard = function GameBoard(level_number) {
 //Add red alienship
     if(Math.random()*1000<1) { //Every frame a ship has 1/1000 of appearing
         var alienship=this.addSprite('alienship', -32, 10, { dx: +2 }); //Draw ship offscreen and move to right, speed set here
-    }
+    };
       
     this.removed_objs = [];
     this.iterate(function() { 

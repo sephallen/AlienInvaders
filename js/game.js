@@ -193,7 +193,7 @@ Missile2.prototype.die = function() {
    this.board.remove(this);
 }
 
-//Red alien spaceship function
+//Red alien spaceship function based on code from https://github.com/efesop/Space-Invaders
 var Alienship = function Alienship(opts) {
   this.dx = opts.dx;
   this.frame = 0;
@@ -206,6 +206,9 @@ Alienship.prototype.draw = function(canvas) {
 Alienship.prototype.step = function(dt) {
   this.x += this.dx;
   this.frame = (this.frame+1) % 3; //Animate 3 frames
+  if (this.x < 500) { //stops the alienship sound when it goes offscreen and wasn't shot
+      GameAudio.play('alienship');
+  }
   return true;
 }
 
