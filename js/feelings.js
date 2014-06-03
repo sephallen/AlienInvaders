@@ -1,4 +1,4 @@
-//Import feelings.txt into array
+//Import feelings.txt into array - each line is a seperate part of the array
 var feelings = new Array();
 $.get('feelings.txt', function(data){
     feelings = data.split('\n');

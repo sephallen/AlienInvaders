@@ -4,10 +4,12 @@
     src: url('fonts/retroville.ttf');
 }
 
+/*Game background colour*/
 #gameboard, #feelingsboard, #scoreboard {
     background-color:black;
 }
 
+/*Center align game*/
 #game-wrapper {
     margin:0 auto;
     width: 500px;

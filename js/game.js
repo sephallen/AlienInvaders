@@ -1,7 +1,4 @@
-var Alienship = function Alienship(canvas) {
-   Sprites.draw(canvas,'alienship',10,10);
-}
-
+//Load alien flock, set speed, win level when all aliens are killed
 var AlienFlock = function AlienFlock() {
   this.invulnrable = true;
   this.dx = 10; this.dy = 0;
@@ -45,8 +42,6 @@ var AlienFlock = function AlienFlock() {
 
 }
 
-
-
 var Alien = function Alien(opts) {
   this.flock = opts['flock'];
   this.frame = 0;
@@ -61,11 +56,13 @@ Alien.prototype.draw = function(canvas) {
 Alien.prototype.die = function() {
 //  Increase score
   Score(1);
+//  Display random feeling
   Feeling();
 //  Play explosion sound
   GameAudio.play('die');
 //  Increase speed of aliens when one is killed
   this.flock.speed += 1;
+//  Remove dead aline from canvas
   this.board.remove(this);
 }
 
@@ -84,7 +81,7 @@ Alien.prototype.step = function(dt) {
     if(this.x > Game.width - Sprites.map.alien1.w * 2) this.flock.hit = -1;
     if(this.x < Sprites.map.alien1.w) this.flock.hit = 1;
   }
-    if(this.y > 470) {
+    if(this.y > 485) { //Kills player if aliens get too low on screen
         GameAudio.play('die');
         Game.callbacks['die']();
     }
@@ -100,15 +97,17 @@ Alien.prototype.fireSometimes = function() {
       }
 }
 
+//Player function
 var Player = function Player(opts) { 
   this.reloading = 0;
 }
 
+//Draw player sprite to canvas
 Player.prototype.draw = function(canvas) {
    Sprites.draw(canvas,'player',this.x,this.y);
 }
 
-
+//When player dies play explosion and display end game lose screen
 Player.prototype.die = function() {
   GameAudio.play('die');
   Game.callbacks['die']();
@@ -132,7 +131,7 @@ Player.prototype.step = function(dt) {
                           this.y-this.h,
                           { dy: -100, player: true });
     this.board.missiles++;
-    this.reloading = 10;
+    this.reloading = 20;
   }
   return true;
 }
@@ -150,7 +149,7 @@ Missile.prototype.draw = function(canvas) {
 Missile.prototype.step = function(dt) {
    this.y += this.dy * dt-10; //Speed of player missile
 
-   var enemy = this.board.collide(this);
+   var enemy = this.board.collide(this); //Collision detection
    if(enemy) { 
      enemy.die();
      return false;
@@ -219,7 +218,7 @@ Alienship.prototype.die = function() {
   this.board.remove(this);
 }
 
-//Update score fuction
+//Update score fuction, points can be passed is an argument, eg Score(100); would be 100 points
 var Score = function Score(x) {
   score = score + x;
   var scorediv = document.getElementById("scoreboard");

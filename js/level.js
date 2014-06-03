@@ -53,14 +53,7 @@ var score = 0;
     var screen = new GameScreen("FEELING INVADERS","PRESS ENTER TO START",
                                  function() {
                                      Game.loadBoard(new GameBoard(1));
-                                     var scorediv = document.getElementById("scoreboard");
-                                     var scorectx = scorediv.getContext("2d");
-                                     scorectx.fillStyle = "#000000";
-                                     scorectx.fillRect(0,0,500,25);
-                                     scorectx.fillStyle = "#FFFFFF";
-                                     scorectx.font = "15px retroville";
-                                     scorectx.textAlign = "center";
-                                     scorectx.fillText("Aliens with feelings needlessly murdered: "+score,250,18);
+                                     Score(0);
                                  });
     Game.loadBoard(screen);
     Game.loop();
@@ -70,7 +63,7 @@ var score = 0;
     var screen = new GameScreen("GAME OVER","PRESS ENTER TO RESTART",
                                  function() {
                                      Game.loadBoard(new GameBoard(1));
-                                     score = 0;
+                                     score = 0; //Reset score for next play but don't refresh display so user can see their previous score until new game is initiated
                                  });
     Game.loadBoard(screen);
   }
@@ -84,6 +77,7 @@ var score = 0;
     Game.loadBoard(screen);
   }
 
+//Load sound files
   $(function() {
     GameAudio.load({ 'fire' : 'media/laser.ogg', 'die' : 'media/explosion.ogg', 'blip' : 'media/blip.ogg', 'alienship' : 'media/alienship.ogg' }, 
                    function() { 
