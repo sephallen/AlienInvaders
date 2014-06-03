@@ -1,3 +1,6 @@
+var Alienship = function Alienship(canvas) {
+   Sprites.draw(canvas,'alienship',10,10);
+}
 
 var AlienFlock = function AlienFlock() {
   this.invulnrable = true;
@@ -54,29 +57,16 @@ Alien.prototype.draw = function(canvas) {
   Sprites.draw(canvas,this.name,this.x,this.y,this.frame);
 }
 
+//Alien dying function
 Alien.prototype.die = function() {
 //  Increase score
-  score++;    
+  Score(1);
+  Feeling();
+//  Play explosion sound
   GameAudio.play('die');
+//  Increase speed of aliens when one is killed
   this.flock.speed += 1;
   this.board.remove(this);
-  var randomFeeling = feelings[Math.floor(Math.random()*feelings.length)];
-//  Display random feeling and redraw background
-  var c = document.getElementById("feelingsboard");
-  var ctx = c.getContext("2d");
-  ctx.fillStyle = "#000000";
-  ctx.fillRect(0,0,500,100);
-  ctx.fillStyle = "#FFFFFF";
-  ctx.font = "15px retroville";
-  wrapText(ctx,randomFeeling,253,18,500,15);
-  var scorediv = document.getElementById("scoreboard");
-  var scorectx = scorediv.getContext("2d");
-  scorectx.fillStyle = "#000000";
-  scorectx.fillRect(0,0,500,25);
-  scorectx.fillStyle = "#FFFFFF";
-  scorectx.font = "15px retroville";
-  scorectx.textAlign = "center";
-  scorectx.fillText("Aliens with feelings needlessly murdered: "+score,250,18);
 }
 
 Alien.prototype.step = function(dt) {
@@ -147,7 +137,7 @@ Player.prototype.step = function(dt) {
   return true;
 }
 
-
+//The function for the player missile
 var Missile = function Missile(opts) {
    this.dy = opts.dy;
    this.player = opts.player;
@@ -174,6 +164,7 @@ Missile.prototype.die = function() {
    this.board.remove(this);
 }
 
+//The function for the alien animated missile
 var Missile2 = function Missile2(opts) {
    this.dy = opts.dy;
    this.player = opts.player;
@@ -200,4 +191,53 @@ Missile2.prototype.die = function() {
   if(this.player) this.board.missiles2--;
   if(this.board.missiles2 < 0) this.board.missiles2=0;
    this.board.remove(this);
+}
+
+//Red alien spaceship function
+var Alienship = function Alienship(opts) {
+  this.dx = opts.dx;
+  this.frame = 0;
+}
+
+Alienship.prototype.draw = function(canvas) {
+  Sprites.draw(canvas,'alienship',this.x,this.y,this.frame);
+}
+
+Alienship.prototype.step = function(dt) {
+  this.x += this.dx;
+  this.frame = (this.frame+1) % 3; //Animate 3 frames
+  return true;
+}
+
+Alienship.prototype.die = function() {
+  Score(10); //Red alien ship is worth 10 points
+  Feeling();
+  GameAudio.play('die');
+  this.board.remove(this);
+}
+
+//Update score fuction
+var Score = function Score(x) {
+  score = score + x;
+  var scorediv = document.getElementById("scoreboard");
+  var scorectx = scorediv.getContext("2d");
+  scorectx.fillStyle = "#000000";
+  scorectx.fillRect(0,0,500,25);
+  scorectx.fillStyle = "#FFFFFF";
+  scorectx.font = "15px retroville";
+  scorectx.textAlign = "center";
+  scorectx.fillText("Aliens with feelings needlessly murdered: "+score,250,18);
+}
+
+//Display random feeling function
+var Feeling = function Feeling() {
+  var randomFeeling = feelings[Math.floor(Math.random()*feelings.length)];
+//  Display random feeling and redraw background
+  var c = document.getElementById("feelingsboard");
+  var ctx = c.getContext("2d");
+  ctx.fillStyle = "#000000";
+  ctx.fillRect(0,0,500,100);
+  ctx.fillStyle = "#FFFFFF";
+  ctx.font = "15px retroville";
+  wrapText(ctx,randomFeeling,253,18,500,15);
 }

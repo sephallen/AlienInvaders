@@ -3,7 +3,7 @@ var Game = new function() {
   var KEY_CODES = { 37:'left', 39:'right', 32 :'fire', 13:'enter' };
   this.keys = {};
 
-//Create canvas
+//Initialise canvas
   this.initialize = function(canvas_dom,level_data,sprite_data,callbacks) {
     this.canvas_elem = $(canvas_dom)[0];
     this.canvas = this.canvas_elem.getContext('2d');
@@ -26,7 +26,7 @@ var Game = new function() {
   };
 
   this.loadBoard = function(board) { Game.board = board; };
-
+//set framerate/game speed
   this.loop = function() { 
     Game.board.step(30/1000); 
     Game.board.render(Game.canvas);
@@ -57,17 +57,18 @@ var GameScreen = function GameScreen(text,text2,callback) {
   this.step = function(dt) {
     if(Game.keys['enter'] && callback) 
         callback();
-          var scorediv = document.getElementById("scoreboard");
-  var scorectx = scorediv.getContext("2d");
-  scorectx.fillStyle = "#000000";
-  scorectx.fillRect(0,0,500,25);
-  scorectx.fillStyle = "#FFFFFF";
-  scorectx.font = "15px retroville";
-  scorectx.textAlign = "center";
-  scorectx.fillText("Aliens with feelings needlessly murdered: "+score,250,18);
+        var scorediv = document.getElementById("scoreboard");
+        var scorectx = scorediv.getContext("2d");
+//        score board text and formatting
+        scorectx.fillStyle = "#000000";
+        scorectx.fillRect(0,0,500,25);
+        scorectx.fillStyle = "#FFFFFF";
+        scorectx.font = "15px retroville";
+        scorectx.textAlign = "center";
+        scorectx.fillText("Aliens with feelings needlessly murdered: "+score,250,18);
   };
 
-//Font styling
+//Font styling for menu screens
   this.render = function(canvas) {
     canvas.clearRect(0,0,Game.width,Game.height);
     canvas.font = "36px retroville";
@@ -123,7 +124,13 @@ var GameBoard = function GameBoard(level_number) {
     return false;
   };
 
-  this.step = function(dt) { 
+  this.step = function(dt) {
+
+//Add red alienship
+    if(Math.random()*1000<1) { //Every frame a ship has 1/1000 of appearing
+        var alienship=this.addSprite('alienship', -32, 10, { dx: +2 }); //Draw ship offscreen and move to right, speed set here
+    }
+      
     this.removed_objs = [];
     this.iterate(function() { 
         if(!this.step(dt)) this.die();
