@@ -1,6 +1,8 @@
 Feeling Invaders
 ================
 
+I really wanted to try and recreate the original experience as much as possible, including look, sound and game play mechanics but also include some added feeling.
+
 Live demo - http://mrjose.ph/AlienInvaders/
 
 It's like Space Invaders,  but with feelings.
