@@ -1,5 +1,8 @@
 Feeling Invaders
 ================
+
+Live demo - http://mrjose.ph/AlienInvaders/
+
 It's like Space Invaders,  but with feelings.
 ---------------------------------------------
 
@@ -16,6 +19,8 @@ Because of the JavaScript CORS "Cross Origin Request Security" model (http://www
 However, as this game is designed to be ran locally, another problem arises. JavaScript is also unable to access local files from the users, machine without permission. To work around this the files can be uploaded to a webserver, or hosted on a local server such as MAMP, WAMP, LAMP etc, node.js or my personal favourite due to simplicity, Python.
 
 If you have Python installed on your machine, fire up a terminal, `cd` to the game directory and type `python -m SimpleHTTPServer` then point your browser to `localhost:8000` and play!
+
+Or if you're feeling less adventurous, you can play a live demo at http://mrjose.ph/AlienInvaders/
 
 Original README from forked project
 -----------------------------------
