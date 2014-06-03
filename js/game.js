@@ -148,7 +148,7 @@ Missile.prototype.draw = function(canvas) {
 }
 
 Missile.prototype.step = function(dt) {
-   this.y += this.dy * dt;
+   this.y += this.dy * dt-10; //Speed of player missile
 
    var enemy = this.board.collide(this);
    if(enemy) { 
